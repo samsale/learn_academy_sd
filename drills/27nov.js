@@ -96,4 +96,4 @@ function mapTest(anArray){
 }
 
 console.log(mapTest(arr1))
- //test
+ //testssss
