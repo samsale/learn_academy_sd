@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel = "stylesheet" type = "text/css"href = "hilocss.css" />
+    <script src="hilo_obj.js"></script>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Hi/Lo Game</h1>
+    <p>A random number has been generated between 1 - 100. Enter your guess below and hit submit</p>
+    <hr>
+    <div id="guessArea" style="display:block"'>
+    <form id="form" onsubmit="return false;">
+    <input type="text" name="What is your Guess?"  id="guess"><br>
+    <input type="submit" value="Submit Guess" onclick="game.testGuess(); document.getElementById('guess').value = ''">
+    </form>
+    </div>
+    <p id='guessed'></p>
+    <input type="submit" value="Play Again" style="display:none" id="playagain" onclick="location.reload()">
+  </body>
+</html>
