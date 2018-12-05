@@ -72,3 +72,23 @@ console.log(evens);
 // 3       5       5       Y
 // 4       6       6       Y
 // 9       7       1       N
+
+
+
+
+
+var people = [{firstName: "Alan", lastName: "Grant"}, {firstName: "Ellie", lastName: "Sattler"}, {firstName: "Ian", lastName: "Malcolm"}]
+
+// var { firstName, lastName } = people
+
+var newPeople = people.map(x => {
+  //Assing values to x variable
+  var { lastName, firstName} = x
+  return {
+    firstName: firstName,
+    lastName: lastName,
+    fullName: `${firstName} ${lastName}`
+  }
+})
+
+console.log(newPeople);
