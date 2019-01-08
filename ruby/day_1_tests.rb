@@ -202,7 +202,7 @@ def get_move()
   move1 = gets.chomp
   puts "Player 2:"
   move2 = gets.chomp
-  playerObj = { "player1": "", "player2": ""}
+  playerObj = [{ "player1": "", "player2": ""}]
   playerObj.merge!(player1: move1)
   playerObj.merge!(player2: move2)
   p playerObj
