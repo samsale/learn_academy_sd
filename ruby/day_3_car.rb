@@ -92,6 +92,25 @@ class Tesla < Car
   end
 end
 
+class Garage
+
+  def initialize
+    @name = "Enrique Garage"
+    @cars = []
+  end
+
+  def add_car object
+    @cars << object
+  end
+
+  def sort_garage
+    @cars = @cars.sort_by!{|object| [object.make, object.year]}
+  end
+
+  def contents
+    @cars
+  end
+end
 
 
 

@@ -200,12 +200,15 @@ it "To make sure we can sort array by make" do
 end
 
 it "To make sure we can sort array by make and then year" do
-  my_cars = [a_toyota = Toyota.new("Camry"), a_tesla = Tesla.new("Model 3"), a_tata = Tata.new("Hexa")]
-  my_cars.sort_by!{|object| [object.make, object.year]}
-  expect(my_cars[0].make).to eq("Tata")
-  expect(my_cars[0].year).to be 2001
-  expect(my_cars[2].make).to eq("Toyota")
-  expect(my_cars[2].year).to be 2019
+  garage = Garage.new
+  garage.add_car(Toyota.new("Camry"))
+  garage.add_car(Tesla.new("Model 3"))
+  garage.add_car(Tata.new("Hexa"))
+  garage.sort_garage
+  expect(garage.contents[0].make).to eq("Tata")
+  expect(garage.contents[0].year).to be 2001
+  expect(garage.contents[2].make).to eq("Toyota")
+  expect(garage.contents[2].year).to be 2019
 end
 
 end
