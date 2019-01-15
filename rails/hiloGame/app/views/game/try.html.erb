@@ -2,7 +2,7 @@
 Player is <%= cookies[:player].capitalize %>
 <br>
 <br>
-<%= form_with(url: "/game", method: :post) do %>
+<%= form_tag("/game", method: :post) do %>
   <%= text_field_tag(:guess) %>
   <%= submit_tag("Guess") %>
 <% end %>

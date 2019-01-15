@@ -1,25 +1,21 @@
 class GameController < ApplicationController
 
-  def try
-
-  params[:result] = nil
-  if session[:random_number].to_i == params[:guess].to_i
-    params[:result] = "Win"
-  elsif params[:guess].to_i > session[:random_number].to_i
-    params[:result] = "Guess lower"
-  elsif params[:guess].to_i < session[:random_number].to_i
-    params[:result] = "Guess higher"
-  end
-
-  current_attempt = cookies[:attempts].to_i
-  current_attempt += 1
-  cookies[:attempts] = current_attempt
-
-  render "try.html.erb"
-  end
-
   def game
-    redirect_to "/try/#{params[:guess]}"
+
+    params[:result] = nil
+    if session[:random_number].to_i == params[:guess].to_i
+      params[:result] = "Win"
+    elsif params[:guess].to_i > session[:random_number].to_i
+      params[:result] = "Guess lower"
+    elsif params[:guess].to_i < session[:random_number].to_i
+      params[:result] = "Guess higher"
+    end
+
+    current_attempt = cookies[:attempts].to_i
+    current_attempt += 1
+    cookies[:attempts] = current_attempt
+
+    render template: "/game/try.html.erb"
   end
 
   def reset
