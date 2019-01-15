@@ -1,0 +1,18 @@
+
+Player is <%= cookies[:player].capitalize %>
+<br>
+<br>
+<%= form_with(url: "/game", method: :post) do %>
+  <%= text_field_tag(:guess) %>
+  <%= submit_tag("Guess") %>
+<% end %>
+
+<br>
+Game Status -  <%= params[:result] %>
+<br>
+Attempts - <%= cookies[:attempts] %><br>
+
+
+<br>
+<br>
+<%= button_to "Reset Board", "/new_game", method: :get %>
