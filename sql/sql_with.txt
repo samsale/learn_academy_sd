@@ -1,0 +1,180 @@
+Of the smallest 10 countries, which has the biggest gnp? (hint: use WITH and LIMIT)
+
+WITH
+populated_countries AS
+(
+SELECT
+name,
+population,
+gnp
+
+FROM
+country
+
+WHERE
+(population > 0)
+AND
+(gnp > 0)
+
+ORDER BY
+population ASC
+
+LIMIT 10
+)
+SELECT
+name,
+population,
+gnp
+
+FROM
+populated_countries
+
+ORDER BY
+gnp DESC
+
+
+
+Of the smallest 10 countries, which has the biggest per capita gnp?
+
+WITH
+populated_countries AS
+(
+SELECT
+name,
+population,
+gnp
+
+
+FROM
+country
+
+WHERE
+(population > 0)
+AND
+(gnp > 0)
+
+ORDER BY
+population ASC
+
+LIMIT 10
+)
+SELECT
+name,
+population,
+gnp,
+gnp / population AS gnp_per_capita
+
+FROM
+populated_countries
+
+ORDER BY
+gnp_per_capita DESC
+
+LIMIT
+1
+
+
+Of the biggest 10 countries, which has the biggest gnp?
+
+WITH
+populated_countries AS
+(
+SELECT
+name,
+population,
+gnp
+
+
+FROM
+country
+
+WHERE
+(population > 0)
+AND
+(gnp > 0)
+
+ORDER BY
+gnp DESC
+
+LIMIT 10
+)
+SELECT
+name,
+population,
+gnp,
+gnp / population AS gnp_per_capita
+
+FROM
+populated_countries
+
+ORDER BY
+population DESC
+
+LIMIT
+1
+
+
+Of the biggest 10 countries, which has the biggest per capita gnp?
+WITH
+populated_countries AS
+(
+SELECT
+name,
+population,
+gnp
+
+
+FROM
+country
+
+WHERE
+(population > 0)
+AND
+(gnp > 0)
+
+ORDER BY
+population DESC
+
+LIMIT 10
+)
+SELECT
+name,
+population,
+gnp,
+gnp / population AS gnp_per_capita
+
+FROM
+populated_countries
+
+ORDER BY
+gnp_per_capita DESC
+
+LIMIT
+1
+
+What is the sum of surface area of the 10 biggest countries in the world? The 10 smallest?
+
+WITH
+biggest_countries AS
+(
+SELECT
+name,
+surfacearea
+
+FROM
+country
+
+WHERE
+(surfacearea > 0)
+
+ORDER BY
+surfacearea DESC
+
+LIMIT 10
+)
+
+SELECT
+SUM(surfacearea)
+
+FROM
+biggest_countries

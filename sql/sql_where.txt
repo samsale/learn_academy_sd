@@ -1,0 +1,92 @@
+What is the population of the US? (HINT: starts with 2, ends with 000)
+
+SELECT
+name,
+population
+
+FROM
+ country
+
+ WHERE
+(name = 'United States')
+
+
+What is the area of the US? (starts with 9, ends with million square miles)
+
+SELECT
+name,
+surfacearea
+
+FROM
+ country
+
+ WHERE
+(name = 'United States')
+
+List the countries in Africa that have a population smaller than 30,000,000 and a life expectancy of more than 45? (all 37 of them)
+SELECT
+name,
+population,
+lifeexpectancy,
+continent
+
+FROM
+ country
+
+ WHERE
+(continent = 'Africa')
+AND
+(population < 30000000)
+AND
+(lifeexpectancy > 45)
+
+
+Which countries are something like a republic? (are there 122 or 143 countries or ?)
+
+SELECT
+name,
+continent,
+governmentform
+
+FROM
+ country
+
+WHERE
+governmentform LIKE '%Republic%'
+
+
+Which countries are some kind of republic and achieved independence after 1945?
+
+SELECT
+name,
+continent,
+governmentform,
+indepyear
+
+FROM
+ country
+
+WHERE
+governmentform LIKE '%Republic%'
+
+AND
+( indepyear > 1945)
+
+
+Which countries achieved independence after 1945 and are not some kind of republic?
+
+
+SELECT
+name,
+continent,
+governmentform,
+indepyear
+
+FROM
+ country
+
+WHERE
+NOT governmentform LIKE '%Republic%'
+
+AND
+( indepyear > 1945)

@@ -1,0 +1,56 @@
+Which fifteen countries have the lowest life expectancy? highest life expectancy?
+
+SELECT
+name,
+lifeexpectancy,
+continent
+
+FROM
+country
+
+WHERE
+lifeexpectancy IS NOT null
+
+ORDER BY
+lifeexpectancy ASC
+
+LIMIT
+15
+
+SELECT
+name,
+surfacearea,
+population,
+continent,
+surfacearea / population AS populationdensity
+
+FROM
+country
+
+WHERE
+(population > 0)
+
+ORDER BY
+populationdensity ASC
+
+LIMIT
+5
+
+Which is the smallest country, by area and population? the 10 smallest countries, by area and population?
+SELECT
+name,
+surfacearea,
+population,
+continent
+
+FROM
+country
+
+WHERE
+(population > 0)
+
+ORDER BY
+surfacearea
+
+LIMIT
+1
