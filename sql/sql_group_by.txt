@@ -1,0 +1,256 @@
+How big are the continents in terms of area and population?
+SELECT
+continent,
+SUM(surfacearea)
+
+FROM
+country
+
+WHERE
+(surfacearea > 0)
+
+GROUP BY
+continent
+
+ORDER BY
+sum DESC
+
+Which region has the highest average gnp?
+SELECT
+continent,
+round(AVG(gnp) , 2) as average_gnp,
+count(name) as no_country
+
+FROM
+country
+
+GROUP BY
+continent
+
+
+
+
+Who is the most influential head of state measured by population?
+
+SELECT
+name,
+headofstate,
+population
+
+FROM
+country
+
+
+ORDER BY
+population DESC
+
+
+LIMIT
+1
+
+Who is the most influential head of state measured by surface area?
+
+SELECT
+name,
+headofstate,
+surfacearea
+
+FROM
+country
+
+
+ORDER BY
+surfacearea DESC
+
+
+LIMIT
+1
+
+What are the most common forms of government? (hint: use count(*))
+SELECT
+governmentform,
+count(governmentform) as number_of
+
+FROM
+country
+
+GROUP BY
+governmentform
+
+ORDER BY
+number_of DESC
+
+What are the forms of government for the top ten countries by surface area?
+WITH
+ top_ten as
+(
+SELECT
+governmentform,
+surfacearea
+
+FROM
+country
+
+ORDER BY
+surfacearea DESC
+
+LIMIT
+10)
+
+SELECT
+governmentform,
+count(governmentform) as total
+
+FROM
+top_ten
+
+GROUP BY
+governmentform
+
+ORDER BY
+total DESC
+
+LIMIT
+1
+
+What are the forms of government for the top ten richest nations? (technically most productive)
+
+WITH
+ top_ten as
+(
+SELECT
+governmentform,
+gnp
+
+FROM
+country
+
+ORDER BY
+gnp DESC
+
+LIMIT
+10)
+
+SELECT
+governmentform,
+count(governmentform) as total
+
+FROM
+top_ten
+
+GROUP BY
+governmentform
+
+ORDER BY
+total DESC
+
+LIMIT
+10
+
+
+What are the forms of government for the top ten richest per capita nations? (technically most productive)
+
+
+WITH
+ top_ten as
+(
+SELECT
+governmentform,
+gnp / population as gnp_per_capita
+
+FROM
+country
+
+WHERE
+(population > 0)
+
+ORDER BY
+gnp_per_capita DESC
+
+LIMIT
+10)
+
+SELECT
+governmentform,
+count(governmentform) as richest_gov_per_capita
+
+FROM
+top_ten
+
+GROUP BY
+governmentform
+
+ORDER BY
+richest_gov_per_capita DESC
+
+LIMIT
+10
+
+
+How many countries are in North America?
+
+WITH
+ north_america as
+(
+SELECT
+name
+
+FROM
+country
+
+WHERE
+(continent = 'North America')
+)
+
+SELECT
+count(*)
+
+FROM
+north_america
+
+Which countries gained their independence before 1963?
+
+WITH
+ independence as
+(
+SELECT
+name
+
+FROM
+country
+
+WHERE
+(indepyear < '1963')
+    AND
+   indepyear IS NOT NULL
+)
+SELECT
+count(*)
+
+FROM
+independence
+
+What is the total population of all continents?
+SELECT
+SUM(population) as total_population
+
+FROM
+country
+
+What is the average life expectancy for all continents?
+SELECT
+AVG(lifeexpectancy) as average_life
+
+FROM
+country
+
+Which countries have the letter z in the name? How many?
+SELECT
+name
+
+
+FROM
+country
+
+WHERE
+name LIKE '%z%'
