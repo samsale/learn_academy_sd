@@ -1,0 +1,13 @@
+<h1> Add Phone Number</h1>
+<hr></hr>
+<!-- Creates a form based off of the new method that creates an instance of Phone -->
+<%= form_for @phone do |form| %>
+<%= form.label :number%><br>
+<%= form.text_field :number %><br>
+<%= form.label :manufacturer%><br>
+<%= form.text_field :manufacturer %><br><br>
+<%= form.submit %>
+<% end %>
+<br>
+<%# This creates a link to take us to the phones pages %>
+<%= link_to 'Return to phone list', phones_path %>
