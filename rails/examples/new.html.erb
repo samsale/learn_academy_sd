@@ -6,6 +6,13 @@
 <%= form.text_field :number %><br>
 <%= form.label :manufacturer%><br>
 <%= form.text_field :manufacturer %><br><br>
+<%= form.label :owner %><br>
+<!-- :contact will the name of the field in the DB we want to populate
+@contact data from PhonesController
+:id is the value in the DB
+:name is what is displayed in the dropdown list
+-->
+<%= form.collection_select :contact_id, @contacts, :id, :id_and_name %><br>
 <%= form.submit %>
 <% end %>
 <br>
